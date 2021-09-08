@@ -92,7 +92,7 @@ soup_2= BeautifulSoup(page_2.text, 'html.parser')
 review_text_2=[]
 text_body_2 = soup_2.find_all(class_='mw-body')
 
-for item in review_text_elem_2:
+for item in text_body_2:
     review_text_2.append(item.text)
 
 
