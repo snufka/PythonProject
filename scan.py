@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 #url= input ("Enter wiki url :")
-url= 'https://de.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart'
+url= 'https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart'
 page=requests.get(url)
 
 #getting the text and parsing it
@@ -15,9 +15,9 @@ soup = BeautifulSoup(page.text, 'html.parser')
 
 #The Wiki page Text
 review_text=[]
-review_text_elem = soup.find_all(class_='mw-body')
+text_body = soup.find_all(class_='mw-body')
 
-for item in review_text_elem:
+for item in text_body:
     review_text.append(item.text)
 
 
@@ -54,11 +54,23 @@ germna_letters= ['ä', 'ö', 'ü', 'ß']
 german_char_dict = {k:sortedDict[k] for k in germna_letters if k in sortedDict}
 values_german_char = german_char_dict.values()
 total_german_char= sum(values_german_char)
-#print("Total number of German letter in the text: {}".format(total_german_char))
-
+print("Total number of German letter in the text: {}".format(total_german_char))
+# Calculation of the % of the German latters of the text
 percentage_of_german_char=  (total_german_char/total_char)*100
+print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
 
-#print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
+#Probablity that the text is in German
+if percentage_of_german_char >= 0.465:
+    print( "We are 100% sure that this text is in German! The frequency of special German characters is 0.465% or higher!")
+elif percentage_of_german_char < 0.465 and percentage_of_german_char >= 0.348:
+    print("The chance that this text is in German is very high 100% - 75%! The frequency of special German characters is {}%".format(percentage_of_german_char))
+elif percentage_of_german_char < 0.348 and percentage_of_german_char >= 0.2325:
+    print("We are 75% - 50% sure that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
+elif percentage_of_german_char < 0.2325 and percentage_of_german_char >= 0.116:
+    print("We are 50% - 25% sure that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
+else: 
+    print( "Not German! There is less than 25% that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
+
 
 #making a ferquency table
 df1=pd.DataFrame(sortedDict.items(),columns=['Letter', 'Frequency 1'])
@@ -67,8 +79,8 @@ df_reset=df1.set_index('Letter')
 
 df_reset.plot.bar()
 
-#TASK 4
-print("-----------------------------------task 4-----------------------------------")
+#TASK 4--------------------------------------------------------------------------------------------
+
 #url_2= input("second link: ")
 url_2='https://de.wikipedia.org/wiki/Angela_Merkel'
 page_2=requests.get(url_2)
@@ -78,7 +90,7 @@ soup_2= BeautifulSoup(page_2.text, 'html.parser')
 
 #The text
 review_text_2=[]
-review_text_elem_2 = soup_2.find_all(class_='mw-body')
+text_body_2 = soup_2.find_all(class_='mw-body')
 
 for item in review_text_elem_2:
     review_text_2.append(item.text)
