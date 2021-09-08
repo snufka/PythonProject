@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 
 
-url= input ("Enter wiki url :")
-#url= 'https://de.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart'
+#url= input ("Enter wiki url :")
+url= 'https://de.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart'
 page=requests.get(url)
 
 #getting the text and parsing it
@@ -51,15 +51,33 @@ for item in clean_str.lower():
 #sorting dictinory alphabetically
 sortedDict = dict( sorted(freq.items(), key=lambda x: x[0].lower()) )
 
-#for k,v in sortedDict.items():
-   # print('{}:{}'.format(k,v))
+#count of letters sum
+values_char = sortedDict.values()
+total_char= sum(values_char)
+print("Total number of letter in the text: {}".format(total_char))
+
+#Counting German Letters and counting the percentage of the letter in the text
+germna_letters= ['ä', 'ö', 'ü', 'ß']
+german_char_dict = {k:sortedDict[k] for k in germna_letters if k in sortedDict}
+values_german_char = german_char_dict.values()
+total_german_char= sum(values_german_char)
+print("Total number of German letter in the text: {}".format(total_german_char))
+
+percentage_of_german_char=  (total_german_char/total_char)*100
+
+print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
+
 #making a ferquency table
 df1=pd.DataFrame(sortedDict.items(),columns=['Letter', 'Frequency 1'])
 print(df1)
+df_reset=df1.set_index('Letter')
+
+df_reset.plot()
 
 #TASK 4
 print("-----------------------------------task 4-----------------------------------")
-url_2= input("second link: ")
+#url_2= input("second link: ")
+url_2='https://de.wikipedia.org/wiki/Angela_Merkel'
 page_2=requests.get(url_2)
 
 #getting the text and parsing it
@@ -102,6 +120,13 @@ for item in clean_str_2.lower():
 
 #sorting dictinory alphabetically
 sortedDict_2 = dict( sorted(freq_2.items(), key=lambda x_2: x_2[0].lower()) )
+
+#count of letters sum
+values_char_2 = sortedDict_2.values()
+
+total_char_2 = sum(values_char_2)
+
+print("Total number of letter in 2nd text: {}".format(total_char_2))
 
 #for k,v in sortedDict_2.items():
     #print('{}:{}'.format(k,v))
