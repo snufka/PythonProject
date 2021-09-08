@@ -23,7 +23,7 @@ for item in review_text_elem:
 
 #Clean version of the text
 string =' '.join([str(item) for item in review_text]) 
-print(string)
+#print(string)
 
 #list of only the letters, including german letters
 x = re.findall("[A-Za-zÀ-ȕ]", string)
@@ -47,25 +47,25 @@ sortedDict = dict( sorted(freq.items(), key=lambda x: x[0].lower()) )
 #count of letters sum
 values_char = sortedDict.values()
 total_char= sum(values_char)
-print("Total number of letter in the text: {}".format(total_char))
+#print("Total number of letter in the text: {}".format(total_char))
 
 #Counting German Letters and counting the percentage of the letter in the text
 germna_letters= ['ä', 'ö', 'ü', 'ß']
 german_char_dict = {k:sortedDict[k] for k in germna_letters if k in sortedDict}
 values_german_char = german_char_dict.values()
 total_german_char= sum(values_german_char)
-print("Total number of German letter in the text: {}".format(total_german_char))
+#print("Total number of German letter in the text: {}".format(total_german_char))
 
 percentage_of_german_char=  (total_german_char/total_char)*100
 
-print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
+#print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
 
 #making a ferquency table
 df1=pd.DataFrame(sortedDict.items(),columns=['Letter', 'Frequency 1'])
-print(df1)
+#print(df1)
 df_reset=df1.set_index('Letter')
 
-df_reset.plot()
+df_reset.plot.bar()
 
 #TASK 4
 print("-----------------------------------task 4-----------------------------------")
@@ -76,13 +76,7 @@ page_2=requests.get(url_2)
 #getting the text and parsing it
 soup_2= BeautifulSoup(page_2.text, 'html.parser')
 
-#!!!! NEED TO ADD THE NAME!!!
-clean_header_2 = [] 
-header_2= soup_2.find_all(class_='firstHeading')
-
-for item in header_2:
-    clean_header_2.append(item.text)
-
+#The text
 review_text_2=[]
 review_text_elem_2 = soup_2.find_all(class_='mw-body')
 
@@ -93,8 +87,6 @@ for item in review_text_elem_2:
 #pretty string of thr text
 string_2 =' '.join([str(item) for item in review_text_2]) 
 
-#also needs to be lower case and alphabet only
-print(clean_header_2)
 
 #list of only the letters including german letters
 x_2 = re.findall("[A-Za-zÀ-ȕ]", string_2)
@@ -119,16 +111,16 @@ values_char_2 = sortedDict_2.values()
 
 total_char_2 = sum(values_char_2)
 
-print("Total number of letter in 2nd text: {}".format(total_char_2))
+#print("Total number of letter in 2nd text: {}".format(total_char_2))
 
 
 #making a ferquency table
 df2=pd.DataFrame(sortedDict_2.items(),columns=['Letter', 'Frequency 2'])
-print(df2)
+#print(df2)
 
 #Merging the table 
 merged_table=pd.merge(df1, df2, on='Letter', how='outer')
-print(merged_table)
+#print(merged_table)
 #changing the index to letters
 df_reset=merged_table.set_index('Letter')
-df_reset.plot()
+df_reset.plot.bar()
