@@ -13,32 +13,24 @@ page=requests.get(url)
 #getting the text and parsing it
 soup = BeautifulSoup(page.text, 'html.parser')
 
-#!!!! NEED TO ADD THE NAME!!!
-clean_header = [] 
-header= soup.find_all(class_='firstHeading')
-
-for item in header:
-    clean_header.append(item.text)
-
+#The Wiki page Text
 review_text=[]
-review_text_elem = soup.find_all(class_='mw-body-content mw-content-ltr')
+review_text_elem = soup.find_all(class_='mw-body')
 
 for item in review_text_elem:
     review_text.append(item.text)
 
 
-#pretty string of thr text
+#Clean version of the text
 string =' '.join([str(item) for item in review_text]) 
+print(string)
 
-#also needs to be lower case and alphabet only
-print(clean_header)
-
-#list of only the letters including german letters
+#list of only the letters, including german letters
 x = re.findall("[A-Za-zÀ-ȕ]", string)
 
 #turn it back to str to count frequency
 clean_str= ''.join([str(elem) for elem in x])
-
+#TASK 3
 #frequency count
 freq = {} 
 for item in clean_str.lower(): 
@@ -51,6 +43,7 @@ for item in clean_str.lower():
 #sorting dictinory alphabetically
 sortedDict = dict( sorted(freq.items(), key=lambda x: x[0].lower()) )
 
+# Task 2
 #count of letters sum
 values_char = sortedDict.values()
 total_char= sum(values_char)
@@ -91,7 +84,7 @@ for item in header_2:
     clean_header_2.append(item.text)
 
 review_text_2=[]
-review_text_elem_2 = soup_2.find_all(class_='mw-body-content mw-content-ltr')
+review_text_elem_2 = soup_2.find_all(class_='mw-body')
 
 for item in review_text_elem_2:
     review_text_2.append(item.text)
@@ -108,7 +101,7 @@ x_2 = re.findall("[A-Za-zÀ-ȕ]", string_2)
 
 #turn it back to str to count frequency
 clean_str_2= ''.join([str(elem) for elem in x_2])
-
+#TASK 3
 #frequency count
 freq_2 = {} 
 for item in clean_str_2.lower(): 
@@ -128,8 +121,7 @@ total_char_2 = sum(values_char_2)
 
 print("Total number of letter in 2nd text: {}".format(total_char_2))
 
-#for k,v in sortedDict_2.items():
-    #print('{}:{}'.format(k,v))
+
 #making a ferquency table
 df2=pd.DataFrame(sortedDict_2.items(),columns=['Letter', 'Frequency 2'])
 print(df2)
@@ -140,5 +132,3 @@ print(merged_table)
 #changing the index to letters
 df_reset=merged_table.set_index('Letter')
 df_reset.plot()
-
-
