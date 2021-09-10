@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 
 #url= input ("Enter wiki url :")
+#for easy testing
 url= 'https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart'
 page=requests.get(url)
 
@@ -25,12 +26,14 @@ for item in text_body:
 string =' '.join([str(item) for item in review_text]) 
 #print(string)
 
+#TASK 3------------------------------------------------------------------------------------------
 #list of only the letters, including german letters
 x = re.findall("[A-Za-zÀ-ȕ]", string)
 
 #turn it back to str to count frequency
 clean_str= ''.join([str(elem) for elem in x])
-#TASK 3
+
+
 #frequency count
 freq = {} 
 for item in clean_str.lower(): 
@@ -43,7 +46,8 @@ for item in clean_str.lower():
 #sorting dictinory alphabetically
 sortedDict = dict( sorted(freq.items(), key=lambda x: x[0].lower()) )
 
-# Task 2
+# Task 2-----------------------------------------------------------------------
+
 #count of letters sum
 values_char = sortedDict.values()
 total_char= sum(values_char)
@@ -52,32 +56,40 @@ total_char= sum(values_char)
 #Counting German Letters and counting the percentage of the letter in the text
 germna_letters= ['ä', 'ö', 'ü', 'ß']
 german_char_dict = {k:sortedDict[k] for k in germna_letters if k in sortedDict}
+
 values_german_char = german_char_dict.values()
 total_german_char= sum(values_german_char)
+
 print("Total number of German letter in the text: {}".format(total_german_char))
+
 # Calculation of the % of the German latters of the text
-percentage_of_german_char=  (total_german_char/total_char)*100
+percentage_of_german_char= (total_german_char/total_char)*100
+
 print("percentage of greman letter in the text: {}".format(percentage_of_german_char))
 
-#Probablity that the text is in German
+#Probablity that the text is in German-----------------------------------------------------------------------------
 if percentage_of_german_char >= 0.465:
     print( "We are 100% sure that this text is in German! The frequency of special German characters is 0.465% or higher!")
+
 elif percentage_of_german_char < 0.465 and percentage_of_german_char >= 0.348:
     print("The chance that this text is in German is very high 100% - 75%! The frequency of special German characters is {}%".format(percentage_of_german_char))
+
 elif percentage_of_german_char < 0.348 and percentage_of_german_char >= 0.2325:
     print("We are 75% - 50% sure that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
+
 elif percentage_of_german_char < 0.2325 and percentage_of_german_char >= 0.116:
     print("We are 50% - 25% sure that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
+
 else: 
     print( "Not German! There is less than 25% that this text is in German! The frequency of special German characters is {}%".format(percentage_of_german_char))
 
 
 #making a ferquency table
 df1=pd.DataFrame(sortedDict.items(),columns=['Letter', 'Frequency 1'])
-#print(df1)
+print(df1)
 df_reset=df1.set_index('Letter')
 
-df_reset.plot.bar()
+df_reset.plot.bar(figsize=(20,10),title='Letters Frequency Distribution')
 
 #TASK 4--------------------------------------------------------------------------------------------
 
@@ -135,4 +147,4 @@ merged_table=pd.merge(df1, df2, on='Letter', how='outer')
 #print(merged_table)
 #changing the index to letters
 df_reset=merged_table.set_index('Letter')
-df_reset.plot.bar()
+df_reset.plot.bar(figsize=(20,10), title='Frequency Comperebale Plot')
