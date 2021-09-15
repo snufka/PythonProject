@@ -67,3 +67,5 @@ def probability_german_text():
 
 
 probability_german_text()
+prob = probability_german_text()
+print(prob)
