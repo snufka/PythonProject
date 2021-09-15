@@ -1,6 +1,6 @@
 from .text_lan_url import url_lang
 from .web_scraping import my_fun
-from .Probability import prob
+from .probability import prob
 from .letters_frequency import lff
 from .frequency_comparison import merged_chart
 

@@ -7,8 +7,8 @@ from letters_frequency import letters_frequency, df1
 
 # Task 4 Plooting----------------------------------------------------------
 
-#url_2= input("second link: ")
-url_2 = 'https://de.wikipedia.org/wiki/Angela_Merkel'
+url_2 = input("Enter second url: ")
+#url_2 = 'https://de.wikipedia.org/wiki/Angela_Merkel'
 
 page_2 = requests.get(url_2)
 secondtext = scraping_webpage(url_2)
