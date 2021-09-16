@@ -1,5 +1,5 @@
 import pytest
-#from ..text_lan_url import url_lang
+from ..text_lan_url import url_lang
 
 url = ''
 
@@ -15,5 +15,5 @@ def lang_in_url(url):
 
 
 def test_for_url_land():
-    assert lang_in_url('https://de.wikipedia.org/wiki/Angela_Merkel') == (
+    assert url_lang('https://de.wikipedia.org/wiki/Angela_Merkel') == (
         "*********Based on the URL, this page is in German**************")
