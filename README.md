@@ -1,7 +1,7 @@
 # Wikipedia Scraping Using Python
 
 The best way to view and interaced with the code is by using the colab link:\
-[Interact with the Code Here!](https://colab.research.google.com/github/snufka/PythonProject/blob/main/updated%20_probability.ipynb#scrollTo=VVhqFyo7FQhW) \
+[Interact with the Code Here!](https://colab.research.google.com/drive/17_L7P27JVbBBDo6nK1D9abYV4DfvNFsh?usp=sharing) \
 \
 If you would like to downlaod this reposatory pleas download all the packages under the requirements.txt by:\
 1. cd to the directory where requirements.txt is located
