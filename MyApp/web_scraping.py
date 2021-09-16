@@ -1,12 +1,9 @@
-#import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-#import re
-#import matplotlib.pyplot as plt
-# %matplotlib inline
+
 
 # Task 1-------------------------------------------------------------------------
-url = input("Enter wiki url :")
+url = input("Enter wiki url: ")
 # for easy testing
 #url= 'https://de.wikipedia.org/wiki/Pietro_Antonio_Lorenzoni'
 

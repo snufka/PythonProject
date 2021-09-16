@@ -1,7 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-# %matplotlib inline
-#import web_scraping as ws
 from letters_frequency import lff
 # Task 5 & 6--------------------------------------------------------------------
 
@@ -66,6 +64,4 @@ def probability_german_text():
             round_percentage_of_german_char))
 
 
-probability_german_text()
 prob = probability_german_text()
-print(prob)
