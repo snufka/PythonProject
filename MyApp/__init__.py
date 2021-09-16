@@ -1,8 +1,9 @@
-from .text_lan_url import url_lang
+from .text_lan_url import url_lang, lang_in_url
 from .web_scraping import my_fun
 from .probability import prob
 from .letters_frequency import lff
 from .frequency_comparison import merged_chart
+
 
 __all__ = [
     'url_lang',
@@ -10,4 +11,5 @@ __all__ = [
     'prob',
     'lff',
     'merged_chart',
+    'lang_in_url',
 ]
