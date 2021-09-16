@@ -21,9 +21,8 @@ Project Structure:
 │   ├── web_scraping.py 
 │   ├── probability.py
 │   ├── letters_frequency.py
-│   └── frequency_comparison.py
-│
-├── test/
+│   ├── frequency_comparison.py
+│   ├── test/
 │   ├── __init__.py
 │   └── test_functions.py
 │
