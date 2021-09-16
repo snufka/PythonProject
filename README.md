@@ -23,7 +23,7 @@ Project Structure:
 │   ├── letters_frequency.py
 │   └── frequency_comparison.py
 │
-├── tests/
+├── test/
 │   ├── __init__.py
 │   └── test_functions.py
 │
