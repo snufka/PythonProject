@@ -1,1 +1,1 @@
-from ..text_lan_url import url_lang
+from text_lan_url import is_lang_german
