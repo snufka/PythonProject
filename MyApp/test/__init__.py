@@ -1,1 +1,0 @@
-from text_lan_url import is_lang_german
