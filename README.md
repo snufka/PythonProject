@@ -21,7 +21,7 @@ Project Structure:
 │   ├── web_scraping.py 
 │   ├── probability.py
 │   ├── letters_frequency.py
-│   ├── frequency_comparison.py
+│   └── frequency_comparison.py
 │
 ├── .gitignore
 ├── README.md
