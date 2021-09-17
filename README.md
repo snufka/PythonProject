@@ -22,9 +22,6 @@ Project Structure:
 │   ├── probability.py
 │   ├── letters_frequency.py
 │   ├── frequency_comparison.py
-│   ├── test/
-│   ├── __init__.py
-│   └── test_functions.py
 │
 ├── .gitignore
 ├── README.md
